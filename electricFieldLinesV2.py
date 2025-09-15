@@ -6,7 +6,7 @@ qe = 1.6e-19
 s = 4e-11
 R = 3e-10
 scaleFactor = 1e-12
-numObs = 1#24
+numObs = 24
 obsStartRadius = 4
 
  # Objects
@@ -22,10 +22,8 @@ for theta in range(numObs):
 	print(obs[theta].pos)
 
  # Calculations
-# test
-
-for i in range(1):#3600
-	rate(1)
+for i in range(3600):
+	rate(60)
 	for j in range(numObs):
 		# electric field plus at the observation location:
 		rplus = obs[j].pos - plus.pos
@@ -51,13 +49,10 @@ for i in range(1):#3600
 		rhat = E / mag(E)
 		#print("Rhat: ", rhat)
 		# and scale it so it looks reasonable
-		#print("E:   ", mag(E))
-		#print("s/4: ", s/16)
+		print("E:   ", mag(E))
+		print("s/4: ", s/16)
 		if scaleFactor * mag(E) < s:
 			obs[j].pos += scaleFactor * mag(E)/16 * rhat
 		else:
 			obs[j].pos += scaleFactor * rhat
-		print("Eplus[", Eplus, "] * rplus[", rplus, "], Charge", qplus)
-		print("Eneg[", Eneg, "] * rneg[", rneg, "], Charge", qplus)
-		print(" = E[", E, "]")
-		#print(" obs: ", obs[j].pos, " E: ", mag(E))
+		#print(" obsv: ", obs[j].pos, " Enet: ", mag(E))
